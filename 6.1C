@@ -54,7 +54,16 @@ pipeline {
     }
     
     post {
-mail bcc: '', body: 'The pipeline ${currentBuild.result.toLowerCase()}.', cc: '', from: '', replyTo: '', subject: 'Pipeline ${currentBuild.result}: ${env.JOB_NAME}', to: 'j28249618@gmail.com '
-            )
+            success {
+                emailext subject: 'Build Success',
+                          body: 'The build was successful.',
+                          to: 'developer@example.com'
+            }
+            failure {
+                emailext subject: 'Build Failure',
+                          body: 'The build failed.',
+                          to: 'developer@example.com'
+            }
+        mail bcc: '', body: 'The pipeline ${currentBuild.result.toLowerCase()}.', cc: '', from: '', replyTo: '', subject: 'Pipeline ${currentBuild.result}: ${env.JOB_NAME}', to: 'j28249618@gmail.com '
         }
 }
