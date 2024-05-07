@@ -4,85 +4,63 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                // Build the code using Maven
+                // Use Maven for building the code
                 echo "Building the code using Maven"
-                }
             }
         }
         
         stage('Unit and Integration Tests') {
             steps {
-                // Run unit tests using JUnit and integration tests using Selenium or Postman
-                script {
-                    // Placeholder for running unit and integration tests
-                    echo "Running unit tests and integration tests"
-                }
+                // Use JUnit for unit tests
+                // Use Selenium or Postman for integration tests
+                echo "Running unit tests and integration tests"
             }
         }
         
         stage('Code Analysis') {
             steps {
-                // Integrate Jenkins with a code analysis tool i.e. SonarQube
-                script {
-                    // Placeholder for code analysis
+                // Use SonarQube for code analysis
                 echo "Analyzing the code using SonarQube"
-                }
             }
         }
         
         stage('Security Scan') {
             steps {
-                // Integrate Jenkins with a security scanning tool like OWASP ZAP or SonarQube
-                script {
+                // Use OWASP ZAP or Snyk for security scanning
                 echo "Performing security scan on the code"
-                }
             }
         }
         
         stage('Deploy to Staging') {
             steps {
-                // Deploy the application to a staging server (e.g., AWS EC2) using AWS CLI or Jenkins AWS plugin
-                script {
+                // Use AWS CLI or Jenkins AWS plugin to deploy to AWS EC2
                 echo "Deploying the application to staging server"
-                }
             }
         }
         
         stage('Integration Tests on Staging') {
             steps {
-                // Run integration tests on the staging environment
-                script {
-                    // Placeholder for running integration tests on staging
-                    echo "Running integration tests on staging environment"
-                }
+                // Use Selenium or Postman for integration tests on staging
+                echo "Running integration tests on staging environment"
             }
         }
         
         stage('Deploy to Production') {
             steps {
-                // Deploy the application to a production server (e.g., AWS EC2) using AWS CLI or Jenkins AWS plugin
-                script {
-                    // Placeholder for deployment to production
+                // Use AWS CLI or Jenkins AWS plugin to deploy to production server
                 echo "Deploying the application to production server"
-                }
             }
         }
     }
     
     post {
         success {
-            // Send success notification email with logs as attachment
-            emailext body: "Pipeline executed successfully.",
-                     subject: "Pipeline Success",
-                     to: "j28249618@gmail.com",
-                     attachLog: true
+            // Send success notification email
+            echo "Sending success notification email"
         }
         failure {
-            // Send failure notification email with logs as attachment
-            emailext body: "Pipeline execution failed.",
-                     subject: "Pipeline Failure",
-                     to: "j28249618@gmail.com",
-                     attachLog: true
+            // Send failure notification email
+            echo "Sending failure notification email"
         }
     }
 }
