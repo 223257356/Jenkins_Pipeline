@@ -1,9 +1,5 @@
 pipeline {
     agent any
-
-    tools {
-        maven "Maven"
-    }
     
     stages {
         stage('Build') {
@@ -20,7 +16,10 @@ pipeline {
                 // Run unit tests using JUnit and integration tests using Selenium or Postman
                 script {
                     // Placeholder for running unit and integration tests
-                    sh 'mvn test'
+                    git url: 'https://github.com/cyrille-leclerc/multi-module-maven-project'
+                    withMaven {
+                              sh "mvn clean verify"
+                            }
                     echo 'Running unit and integration tests...'
                 }
             }
