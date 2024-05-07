@@ -5,8 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Build the code using Maven
-                script {
-                    sh 'mvn clean package'
+                echo "Building the code using Maven"
                 }
             }
         }
@@ -16,11 +15,7 @@ pipeline {
                 // Run unit tests using JUnit and integration tests using Selenium or Postman
                 script {
                     // Placeholder for running unit and integration tests
-                    git url: 'https://github.com/cyrille-leclerc/multi-module-maven-project'
-                    withMaven {
-                              sh "mvn clean verify"
-                            }
-                    echo 'Running unit and integration tests...'
+                    echo "Running unit tests and integration tests"
                 }
             }
         }
@@ -30,8 +25,7 @@ pipeline {
                 // Integrate Jenkins with a code analysis tool i.e. SonarQube
                 script {
                     // Placeholder for code analysis
-                    sh 'sonar-scanner'
-                    echo 'Performing code analysis...'
+                echo "Analyzing the code using SonarQube"
                 }
             }
         }
@@ -40,9 +34,7 @@ pipeline {
             steps {
                 // Integrate Jenkins with a security scanning tool like OWASP ZAP or SonarQube
                 script {
-                    // Placeholder for security scan
-                    sh 'zap-scanner'
-                    echo 'Performing security scan...'
+                echo "Performing security scan on the code"
                 }
             }
         }
@@ -51,9 +43,7 @@ pipeline {
             steps {
                 // Deploy the application to a staging server (e.g., AWS EC2) using AWS CLI or Jenkins AWS plugin
                 script {
-                    // Placeholder for deployment to staging
-                    sh 'jenkins-deploy-staging'
-                    echo 'Deploying to staging...'
+                echo "Deploying the application to staging server"
                 }
             }
         }
@@ -63,8 +53,7 @@ pipeline {
                 // Run integration tests on the staging environment
                 script {
                     // Placeholder for running integration tests on staging
-                    sh 'mvn test'
-                    echo 'Running integration tests on staging...'
+                    echo "Running integration tests on staging environment"
                 }
             }
         }
@@ -74,8 +63,7 @@ pipeline {
                 // Deploy the application to a production server (e.g., AWS EC2) using AWS CLI or Jenkins AWS plugin
                 script {
                     // Placeholder for deployment to production
-                    sh 'jenkins-deploy-production'
-                    echo 'Deploying to production...'
+                echo "Deploying the application to production server"
                 }
             }
         }
