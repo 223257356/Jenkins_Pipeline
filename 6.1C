@@ -54,9 +54,9 @@ pipeline {
     
   stage('Email Notification') {
     steps {
-            mail bcc: '', body: 'The pipeline ${currentBuild.result.toLowerCase()}.', 
+            mail bcc: '', body: 'The pipeline was successfully built.', 
             cc: '', from: '', replyTo: '', 
-            subject: 'Pipeline ${currentBuild.result}: ${env.JOB_NAME}', 
+            subject: 'Pipeline Built Successful', 
             to: 'j28249618@gmail.com' 
         }
      }
