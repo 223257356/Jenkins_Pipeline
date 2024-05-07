@@ -51,7 +51,6 @@ pipeline {
                 echo "Deploying the application to production server"
             }
         }
-    }
     
   stage('Email Notification') {
     steps {
@@ -60,5 +59,6 @@ pipeline {
             subject: 'Pipeline ${currentBuild.result}: ${env.JOB_NAME}', 
             to: 'j28249618@gmail.com' 
         }
-    }
+     }
+   }
 }
