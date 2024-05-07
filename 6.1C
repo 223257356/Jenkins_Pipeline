@@ -55,14 +55,15 @@ pipeline {
     
     post {
             success {
-                emailext subject: 'Build Success',
-                          body: 'The build was successful.',
+                emailext subject: "Pipeline ${currentBuild.result}: ${env.JOB_NAME}",
+                          body: "The pipeline ${currentBuild.result.toLowerCase()}.",
                           to: 'j28249618@gmail.com'
             }
             failure {
-                emailext subject: 'Build Failure',
-                          body: 'The build failed.',
+                emailext subject: "Pipeline ${currentBuild.result}: ${env.JOB_NAME}",
+                          body: "The pipeline ${currentBuild.result.toLowerCase()}.",
                           to: 'j28249618@gmail.com'
             }
         }
+
 }
